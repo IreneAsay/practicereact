@@ -1,8 +1,8 @@
 import React from "react";
-import HelloReact from "./components/HelloReact";
+import Alert from "./components/Alert";
 
 function App() {
-  return <HelloReact />;
+  return <Alert type="danger">Invalid user id or password</Alert>;
 }
 
 export default App;
