@@ -1,31 +1,21 @@
-# Friends List Refactor
+# Hello Div
 
-In this activity, we will use our new React skills to further refactor the Friends List application from earlier.
+In this activity, we will render a list of JSX elements inside of a div.
 
 ## Instructions
 
-* Replace your React App's `src` folder with [Unsolved/src](Unsolved/src). Stop the dev server if it is already running. Start the app in dev mode by running `npm start`.
+* Replace the `src` folder of your React app with [src](Unsolved/src). Stop the dev server if it is already running. Start the app in dev mode by running `npm start`.
 
-* Open [localhost:3000](http://localhost:3000) in your browser and take a moment to study the rendered app.
+* Using the code in the [HelloDiv.js](Unsolved/src/components/HelloDiv.js) file as a starting point, update the `HelloDiv` function so that it returns the following JSX:
 
-* Refactor the `App` component so that it's a class component. 
+  * A heading tag introducing yourself, e.g., `<h1>Hello! My name is <insert name here></h1>`.
 
-  * Set the component's initial state to the `friends` JSON array. 
-  
-  * Inside of the `render` method, map over `this.state.friends` to render each `FriendCard` component passing in the appropriate props.
+  * An unordered list containing at least 3 things you like (these can be anything).
 
-* Add functionality to the application so that when the red X icon on a `FriendCard` is clicked, that `FriendCard` is removed from the page. 
-  
-  * To accomplish this, you should define a method inside of `App` which accepts an `id` parameter, and then utilize filter to create a new array of friends without the passed `id`. 
-  
-  * Then set `this.state.friends` to this new filtered array. 
-  
-  * You'll want to pass this method into each `FriendCard` component and attach an `onClick` listener to the "remove" span.
+### Hints
 
-## Hints
+* You will need to import the React library.
 
-* Test your application after each step!!
+* Reference the previous `HelloReact` activity if you get stuck with any syntax.
 
-* Refer back to the previous in class activities for if you get stuck anywhere.
-
-* If you get stuck working with the event handler, spend a few minutes reading [React's Documentation](https://facebook.github.io/react/docs/handling-events.html) on handling events. 
+* If you're trying to render multiple JSX tags from a single component, you should enclose all of the JSX tags within a single parent tag, such as a `div`.
