@@ -2,7 +2,7 @@ import React from "react";
 
 function HelloDiv() {
   return (
-    <div>
+    <>
       <h1>Hello, my name is Irene Asay.</h1>
       <h2>Languages I speak:</h2>
       <ul>
@@ -10,7 +10,7 @@ function HelloDiv() {
         <li>Chinese</li>
         <li>Taiwanese</li>
       </ul>
-    </div>
+    </>
   );
 }
 
