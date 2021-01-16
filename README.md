@@ -1,37 +1,33 @@
-# AJAX
+# Conditional Render
 
-In this activity we will create a simple React application with which users can query the OMDB API and display information about the movie searched for.
+In this activity we will render one of four different components based upon our component's state.
 
 ## Instructions
 
-* Replace your React application's `src` folder with [Unsolved/src](Unsolved/src). 
+* Replace your application's `src` folder with [Unsolved/src](Unsolved/src). Stop the dev server if it is already running. Start the app in dev mode by running `npm start`.
 
 * This activity uses Bootstrap, so make sure you `import 'bootstrap/dist/css/bootstrap.min.css';` in `index.js`
 
-* Be sure to install the axios library by running `npm install axios` in your terminal.
+* Navigate to [localhost:3000](http://localhost:3000) in your web browser and take a moment to study the rendered application.
 
-* Stop the dev server if it is already running. Start the app in dev mode by running `npm start`.
+  * At the top of the page there's a Bootstrap NavTabs component. Whenever a nav element is clicked, the nav element goes into an "active" state. Whenever a nav item is clicked, it sets `this.state.currentPage` inside of `PortfolioContainer` to the selected navigation item.
 
-* Open your browser to [localhost:3000](http://localhost:3000) and study the rendered application.
+* Now add code to `PortfolioContainer` so that depending on the currently selected page, a different component is rendered underneath the `NavTabs` component. Example:
 
-* This application is supposed to allow users to search for the name of a movie via the form on the right of the page, and display information from the OMDB API on the left side. Currently the application isn't fully functional.
+  * Render the `About` component when `this.state.currentPage === "About"`
+  
+  * Render the `Blog` component when `this.state.currentPage === "Blog"`
 
-* Open the `src/OmdbContainer.js` and add the following code:
+  * Render the `Contact` component when `this.state.currentPage === "Contact"`
 
-  * Add a `componentDidMount` method which should utilize the `API.js` module to query the OMDB API for the movie "The Matrix" when the component mounts. Then update this component's `result` state with the result of the AJAX request. You can verify you completed this step correctly by refreshing the page in your web browser. If successful, the application should display information about the movie "The Matrix" when the page first loads.
-
-  * Add a `handleInputChange` method which should be called whenever the user types into the input field. Inside of this method, set `this.state.search` equal to the new value of the input field. You can verify you've completed this step correctly if you can now type into the input field.
-
-  * Add a `handleFormSubmit` method which should be called when the form is submitted. Inside of this method, utilize the `API` module to search the OMDB API for the value of `this.state.search`. Then update this component's `result` state with the result. You can verify you completed this step correctly by searching for the name of a movie. If successful, you should see the movie poster and some information about the movie appear in the left card.
+  * Render the `Home` component when `this.state.currentPage === "Home"`
 
 ### Bonus
 
-* After you get the rest of the application code working, add code so that if no movie results are found, a message is displayed indicating this in place of the `MovieDetail` component. Otherwise display the `MovieDetail` component. You can verify you completed this step correctly by searching for an empty string. If successful, you should see your message being displayed instead of any movie information.
+* Inside of `src/components/NavTabs.js`, add code so that the `a` tag for the `currentPage` has the "active" class. This component receives the `currentPage` via props.
 
 ### Hints
 
-* Don't forget to call `event.preventDefault()` inside of any event handlers called in response to an HTML form being submitted.
+* Refer to [React's Documentation on Conditional Rendering](https://facebook.github.io/react/docs/conditional-rendering.html) if you get stuck.
 
-* The only code you need to modify is inside of `OmdbContainer.js`.
-
-* If you make it to the bonus, check out [React's Documentation on Conditional Rendering](https://facebook.github.io/react/docs/conditional-rendering.html). Use any of the techniques described to complete the bonus.
+* Consider defining a method which returns a different component based on the value of `this.state.currentPage`.
