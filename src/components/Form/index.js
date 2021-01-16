@@ -5,30 +5,44 @@ class Form extends Component {
   // Setting the component's initial state
   state = {
     firstName: "",
-    lastName: ""
+    lastName: "",
+    password: "",
   };
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     // Getting the value and name of the input which triggered the change
     const value = event.target.value;
     const name = event.target.name;
 
-    // Updating the input's state
-    this.setState({
-      [name]: value
-    });
+    if (name === "password" && value.length < 15) {
+      // Updating the input's state
+      this.setState({
+        [name]: value,
+      });
+    } else {
+      this.setState({
+        [name]: value,
+      });
+    }
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-
-    // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
-    alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
-    this.setState({
-      firstName: "",
-      lastName: ""
-    });
+    if (!this.state.firstName || !this.state.lastName) {
+      alert("Fill out your first and last name, please!");
+    } else if (this.state.password.length < 6) {
+      alert(
+        `Choose a more secure password, ${this.state.firstname} ${this.state.lastName}`
+      );
+    } else {
+      // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
+      alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
+      this.setState({
+        firstName: "",
+        lastName: "",
+      });
+    }
   };
 
   render() {
@@ -52,6 +66,13 @@ class Form extends Component {
             onChange={this.handleInputChange}
             type="text"
             placeholder="Last Name"
+          />
+          <input
+            name="password"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            type="password"
+            placeholder="Enter your password here."
           />
           <button onClick={this.handleFormSubmit}>Submit</button>
         </form>
