@@ -1,8 +1,8 @@
 import React from "react";
-import HelloDiv from "./components/HelloDiv";
+import Form from "./components/Form";
 
 function App() {
-  return <HelloDiv />;
+  return <Form />;
 }
 
 export default App;
