@@ -1,20 +1,37 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./containers/Home/Home";
-import Discover from "./containers/Discover/Discover";
-import Search from "./containers/Search/Search";
-import NavTabs from "./components/NavTabs";
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [developerState, setDeveloperState] = useState({
+    excitementLevel: 10000,
+    lifeLongLearner: true,
+    mood: "excited",
+    name: "Alec"
+  });
+
   return (
-    <Router>
+    <div className="card">
       <div>
-        <NavTabs />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/discover" component={Discover} />
-        <Route exact path="/search" component={Search} />
+        Name: {developerState.name}
       </div>
-    </Router>
+      <div>
+        Status: {developerState.mood}
+      </div>
+      <div>
+        Lifelong learner: {developerState.lifeLongLearner.toString()}
+      </div>
+      <div>
+        Excitement Level: {developerState.excitementLevel}
+      </div>
+      <div className="btn-group">
+        <button onClick={() => setDeveloperState({ ...developerState, mood: "lazy" })} className="btn btn-danger">
+          Encourage Laziness
+        </button>
+        <button onClick={() => setDeveloperState({ ...developerState, mood: "determined" })} className="btn btn-success">
+          Fill with Determination
+        </button>
+      </div>
+    </div>
   );
 }
 
